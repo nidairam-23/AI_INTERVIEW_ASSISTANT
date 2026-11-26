@@ -7,6 +7,7 @@ st.caption('Practice interview with AI-generated questions and constructive feed
 st.caption('Developed by:NIDA IRAM')
 try:
   client = Groq(api_key=st.secrets['GROQ_API_KEY'])
+  st.write("API connection is successful")
 except (KeyError, FileNotFoundError):
   st.error('GROQ_API_KEY is missing , add it to streamlit cloud -> app settings secrets')
   st.stop()

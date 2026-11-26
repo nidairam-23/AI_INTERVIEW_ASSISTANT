@@ -19,4 +19,4 @@ role = stselectbox("Select Job Role",
                     "Machine Learning Engineer",
                     "Software Engineer",
                     "HR Executive"
-                    ]}
+                    ])

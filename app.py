@@ -12,7 +12,7 @@ except (KeyError, FileNotFoundError):
   st.error('GROQ_API_KEY is missing , add it to streamlit cloud -> app settings secrets')
   st.stop()
 
-role = st.selectbox("Select Job Role",[
+role = stselectbox("Select Job Role",[
                     "Python Developer",
                     "Java Developer",
                     "Data Analyst",
@@ -20,3 +20,14 @@ role = st.selectbox("Select Job Role",[
                     "Software Engineer",
                     "HR Executive"
                     ])
+if st.button("Generate Interview Questions"):
+  prompt = "Generate 5 Interview Questions for the role of " + role
+  response = client.chat.completions.create(
+    model="openai/gpt-oss-120b",
+    messages=[
+         {"role": "system", "content": "You are an expert technical Interviewer"},
+      {"role": "user", "content": prompt}
+    ]
+  )
+  output = response.choices[0].message.content
+  st.write(output)

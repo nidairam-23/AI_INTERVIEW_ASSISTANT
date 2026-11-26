@@ -5,3 +5,8 @@ st.set_page_config(page_title='AI Interview Assistant', layout='centered')
 st.title('AI Interview Assistant')
 st.caption('Practice interview with AI-generated questions and constructive feedback.')
 st.caption('Developed by:NIDA IRAM')
+try:
+  client = Groq(api_key=st.secrets['GROQ_API_KEY'])
+except (KeyError, FileNotFoundError):
+  st.error('GROQ_API_KEY is missing , add it to streamlit cloud -> app settings secrets')
+  st.stop()
